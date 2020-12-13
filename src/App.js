@@ -1,23 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Container from './components/Container';
+// import { useSelector } from 'react-redux';
 
-function App() {
+const App = () => {
+  // const itemSelector = useSelector(state => state.itemSelector)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <header><h1>My Playlist</h1></header>
+      <Container />
     </div>
   );
 }
