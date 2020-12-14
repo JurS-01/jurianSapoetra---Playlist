@@ -24,6 +24,7 @@ class Container extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
         // this.handleSort = this.handleSort.bind(this)
     }
 
@@ -45,6 +46,15 @@ class Container extends React.Component {
         updatedSongList = [...updatedSongList, newSong]
         console.log(updatedSongList);
         this.setState({ songList: updatedSongList })
+    }
+
+    handleDelete(event) {
+        let updatedSongList = [...this.state.songList]
+        let index = updatedSongList.findIndex(song => song.id == event.target.id)
+        if (index !== -1) {
+            updatedSongList.splice(index, 1)
+            this.setState({ songList: updatedSongList })
+        }
     }
 
     // handleSort(event) {
@@ -95,8 +105,7 @@ class Container extends React.Component {
             <div>
                 <AddSong handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
                 <SortBar sortByTitle={this.sortByTitle} sortByArtist={this.sortByArtist} sortByGenre={this.sortByGenre} sortByRating={this.sortByRating} />
-                <List songList={this.state.songList} />
-                <p>New: {this.state.newTitle}, {this.state.newArtist}, {this.state.newGenre}, {this.state.newRating},</p>
+                <List songList={this.state.songList} handleDelete={this.handleDelete} />
             </div>
         )
     }
