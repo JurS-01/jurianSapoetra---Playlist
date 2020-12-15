@@ -8,16 +8,13 @@ const AddSong = (props) => {
                 <input type="text" name="newArtist" placeholder="artist" onChange={props.handleChange} ></input>
                 <select id="newGenre" name="newGenre" onChange={props.handleChange} defaultValue={'DEFAULT'}>
                     <option value="DEFAULT" disabled>genre:</option>
-                    <option value="blues">Blues</option>
-                    <option value="classical">Classical</option>
-                    <option value="hiphop">Hiphop</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="pop">Pop</option>
-                    <option value="rock">Rock</option>
-                    <option value="soul">Soul</option>
+                    <option value="Classical">Classical</option>
+                    <option value="Hiphop">Hiphop</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Rock">Rock</option>
                 </select>
-                <select id="newRating" name="newRating" onChange={props.handleChange} >
-                    <option value="" disabled selected>rating:</option>
+                <select id="newRating" name="newRating" onChange={props.handleChange} defaultValue={'DEFAULT'}>
+                    <option value="DEFAULT" disabled selected>rating:</option>
                     <option value="5">#####</option>
                     <option value="4">####</option>
                     <option value="3">###</option>
