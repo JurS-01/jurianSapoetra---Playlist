@@ -3,7 +3,7 @@ import React from 'react';
 const FilterBar = (props) => {
     return (
         <div>
-            <form onClick={props.handleGenreFilter}>
+            <form>
                 <select id="filterGenre" name="filterGenre" onChange={props.handleChange} >
                     <option value="All">All</option>
                     <option value="Classical">Classical</option>
@@ -11,9 +11,9 @@ const FilterBar = (props) => {
                     <option value="Pop">Pop</option>
                     <option value="Rock">Rock</option>
                 </select>
-                <button type="submit">Filter</button>
+                <button type="submit" onClick={props.handleGenreFilter}>Filter</button>
             </form>
-            <form onClick={props.handleStarFilter}>
+            <form>
                 <select id="filterStar" name="filterStar" onChange={props.handleChange} >
                     <option value="All">All</option>
                     <option value="5">#####</option>
@@ -22,12 +22,10 @@ const FilterBar = (props) => {
                     <option value="2">##</option>
                     <option value="1">#</option>
                 </select>
-                <button type="submit">Filter</button>
+                <button type="submit" onClick={props.handleStarFilter}>Filter</button>
             </form>
         </div>
     )
 }
 
 export default FilterBar;
-
-// <button onClick={props.handleFilter}>filterHiphop</button>

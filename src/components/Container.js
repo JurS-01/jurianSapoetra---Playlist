@@ -5,6 +5,13 @@ import List from './List';
 import FilterBar from './FilterBar';
 import { v4 as uuidv4 } from 'uuid';
 
+/* 
+- sort correct from first click
+- sort in one short function
+- styling:
+    # hamburger menu
+    # show component bar
+*/
 
 class Container extends React.Component {
     constructor() {
@@ -24,7 +31,8 @@ class Container extends React.Component {
             newGenre: "",
             newRating: "",
             filterStar: "",
-            filterGenre: ""
+            filterGenre: "",
+            filterType: ""
         }
         this.displayFullList = this.displayFullList.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -38,7 +46,11 @@ class Container extends React.Component {
     // DISPLAY FULL LIST
     displayFullList() {
         const fullList = this.state.songList
-        this.setState({ displayedList: fullList })
+        const listType = "My full playlist"
+        this.setState({
+            displayedList: fullList,
+            filterType: listType
+        })
     }
 
     // TOEVOEGEN
@@ -91,34 +103,28 @@ class Container extends React.Component {
     // };
 
     handleSort(sortType) {
-        console.log(sortType);
         let sortedList = this.state.displayedList
         this.state.isSorted ? sortedList.sort(sortType) : sortedList.reverse(sortType)
         this.setState({
             songList: sortedList,
-            // songList: this.state.isSorted ? sortedList.sort(sortType) : sortedList.reverse(sortType),
             isSorted: !this.state.isSorted
         });
     };
 
     sortByTitle = () => {
         this.handleSort((a, b) => a.title.localeCompare(b.title));
-        console.log('Sorted by title.');
     };
 
     sortByArtist = () => {
         this.handleSort((a, b) => a.artist.localeCompare(b.artist));
-        console.log('Sorted by artist.');
     };
 
     sortByGenre = () => {
         this.handleSort((a, b) => a.genre.localeCompare(b.genre));
-        console.log('Sorted by genre.');
     };
 
     sortByRating = () => {
         this.handleSort((a, b) => b.rating - a.rating);
-        console.log('Sorted by rating.');
     };
 
     // FILTEREN
@@ -126,38 +132,50 @@ class Container extends React.Component {
     handleGenreFilter(event) {
         event.preventDefault();
         let GenreFilteredList = "";
-        this.state.filterGenre === "All"
-            ? GenreFilteredList = this.state.songList
-            : GenreFilteredList = this.state.songList.filter(song => song.genre === this.state.filterGenre)
-        this.setState({ displayedList: GenreFilteredList });
+        let listType = "";
+        if (this.state.filterGenre === "All") {
+            GenreFilteredList = this.state.songList;
+            listType = "My full playlist"
+        } else {
+            GenreFilteredList = this.state.songList.filter(song => song.genre === this.state.filterGenre)
+            listType = `My ${this.state.filterGenre} playlist`
+        }
+        this.setState({
+            displayedList: GenreFilteredList,
+            filterType: listType
+        });
     }
 
     handleStarFilter(event) {
         event.preventDefault();
         let StarFilteredList = "";
-        this.state.filterStar === "All"
-            ? StarFilteredList = this.state.songList
-            : StarFilteredList = this.state.songList.filter(song => song.rating === this.state.filterStar)
-        this.setState({ displayedList: StarFilteredList });
-    }
+        let listType = "";
 
-    /* make filter jump back on default after adding new song
-    - sort correct from first click
-    - sort in one short function
-    - redux
-    - styling:
-        # hamburger menu
-        # show component bar
-    */
+        if (this.state.filterStar === "All") {
+            StarFilteredList = this.state.songList;
+            listType = "My full playlist"
+        } else {
+            StarFilteredList = this.state.songList.filter(song => song.rating === this.state.filterStar)
+            listType = `My ${this.state.filterStar}-star playlist`
+        }
+        this.setState({
+            displayedList: StarFilteredList,
+            filterType: listType
+        });
+    }
 
     render() {
         return (
             <div>
-                <button onClick={this.displayFullList}>Show my song list</button>
-                <AddSong handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-                <SortBar sortByTitle={this.sortByTitle} sortByArtist={this.sortByArtist} sortByGenre={this.sortByGenre} sortByRating={this.sortByRating} />
-                <FilterBar handleChange={this.handleChange} handleGenreFilter={this.handleGenreFilter} handleStarFilter={this.handleStarFilter} />
-                <List songList={this.state.displayedList} handleDelete={this.handleDelete} />
+                <div className="list-editor">
+                    <button onClick={this.displayFullList}>START</button>
+                    <AddSong handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+                    <SortBar sortByTitle={this.sortByTitle} sortByArtist={this.sortByArtist} sortByGenre={this.sortByGenre} sortByRating={this.sortByRating} />
+                    <FilterBar handleChange={this.handleChange} handleGenreFilter={this.handleGenreFilter} handleStarFilter={this.handleStarFilter} />
+                </div>
+                <div className="list">
+                    <List songList={this.state.displayedList} filterType={this.state.filterType} handleDelete={this.handleDelete} />
+                </div>
             </div>
         )
     }
