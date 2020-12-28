@@ -2,33 +2,73 @@
 
 .header {
   background: olivedrab;
-  margin-bottom: 30px;
   padding-bottom: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 1px white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding-top: 15px;
+}
+
+.nav-list {
+  list-style: none;
   text-align: center;
 }
 
-.list-editor {
+.nav-list li {
+  display: inline;
+  border-radius: 5px;
+  border: solid 1px black;
+  margin: 3px;
+  padding: 2px;
+}
+
+.nav-list li:hover {
+  border: solid 2px black;
+}
+
+.nav-list a {
+  text-decoration: none;
+}
+
+
+
+.list-editor, .start-btn-box {
   background: wheat;
-  margin: 30px;
+  margin: 30px 400px;
   padding: 30px;
-  border: solid 2px rgb(87, 87, 87);
+  border: solid 2px rgb(167, 167, 167);
   box-shadow: 4px 4px 5px lightgray;
+  border-radius: 5px;
 }
 
 .list-editor button{
-  /* background-color: lightsteelblue; */
-  /* border: none;*/
-  /* box-shadow: 4px 4px 5px lightgray; */
   border-radius: 5px;
   margin: 3px;
 }
 
+#edit-tools {
+  display: none;
+}
+
+.start-btn-box {
+  padding: 50px;
+  text-align: center; 
+}
+
+.start-btn {
+  background: lightseagreen;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 4px 4px 5px lightgray;
+  padding: 10px 20px;
+}
+
 .list {
   background: burlywood;
-  /* color: blue; */
   border: solid 2px rgb(167, 167, 167);
   box-shadow: 4px 4px 5px lightgray;
-  margin: 30px;
+  border-radius: 5px;
+  margin: 30px 50px;
   padding: 30px;
 }
 
@@ -37,8 +77,27 @@
   color: rgb(87, 87, 87);
 }
 
+.item-box {
+  background: white;
+}
+
 .list ul {
   list-style: none;
+}
+
+.list-item {
+  list-style-type: none;
+  text-align: left;
+  padding: 3px 10px;
+  background: white;
+}
+
+.list-item:nth-child(2n + 1) {
+  background: lightgray;
+}
+
+.itemDetails {
+  color: rgb(92, 92, 92);
 }
 
 .icon-trash::after {
@@ -46,3 +105,15 @@
   }
 
 
+.about-box {
+  background: wheat;
+  margin: 30px 400px;
+  padding: 30px;
+  border: solid 2px rgb(167, 167, 167);
+  box-shadow: 4px 4px 5px lightgray;
+  border-radius: 5px;
+}
+
+.about-box {
+color: rgb(87, 87, 87);
+}
