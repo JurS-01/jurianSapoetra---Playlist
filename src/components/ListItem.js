@@ -1,23 +1,19 @@
 import React from 'react';
 
-// const ListItem = (props) => {
-//     return (
-//         <div className="item-box">
-//             <li key={props.song.id} className="list-item">
-//                 title: {props.song.title}, artist: {props.song.artist}, genre: {props.song.genre}, stars: {props.song.rating}
-//                 <span className="icon-trash" id={props.song.id} onClick={props.handleDelete}> </span>
-//             </li>
-//         </div>
-//     )
-// }
+
 
 const ListItem = (props) => {
     return (
-        <li key={props.song.id} className="list-item">
-            {props.song.title} - {props.song.artist} <spanby className="itemDetails">(genre: {props.song.genre}, stars: {props.song.rating})</spanby>
-            <span className="icon-trash" id={props.song.id} onClick={props.handleDelete}> </span>
-        </li>
-    )
+        <tr key={props.song.id} className="list-item">
+            <td className="item">{props.song.title}</td>
+            <td className="item">{props.song.artist}</td>
+            <td className="item">{props.song.genre}</td>
+            <td className="item">{props.song.rating}</td>
+            <td className="item">
+                <span className="icon-trash" id={props.song.id} onClick={props.handleDelete}> </span>
+            </td>
+        </tr>
+    );
 }
 
 export default ListItem

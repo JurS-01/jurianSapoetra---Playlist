@@ -85,10 +85,17 @@
   list-style: none;
 }
 
-.list-item {
-  list-style-type: none;
+.table-headers {
   text-align: left;
-  padding: 3px 10px;
+  background: olivedrab;
+}
+
+.table-head, .item {
+  padding-left: 5px;
+}
+
+.list-item {
+  text-align: left;
   background: white;
 }
 
@@ -96,8 +103,8 @@
   background: lightgray;
 }
 
-.itemDetails {
-  color: rgb(92, 92, 92);
+.item {
+  font-weight: 400;
 }
 
 .icon-trash::after {
