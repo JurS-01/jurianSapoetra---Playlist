@@ -1,5 +1,9 @@
 
 
+button {
+  cursor: pointer;
+}
+
 .header {
   background: olivedrab;
   padding-bottom: 10px;
@@ -56,7 +60,7 @@
 }
 
 .start-btn {
-  background: lightseagreen;
+  background: darkcyan;
   color: white;
   border-radius: 5px;
   box-shadow: 4px 4px 5px lightgray;
@@ -72,10 +76,10 @@
   padding: 30px;
 }
 
-.list-header {
-  text-align: center;
-  color: rgb(87, 87, 87);
-}
+  .list-header {
+    text-align: center;
+    color: rgb(87, 87, 87);
+  }
 
 .item-box {
   background: white;
@@ -87,7 +91,8 @@
 
 .table-headers {
   text-align: left;
-  background: olivedrab;
+  background: rgb(141, 137, 79);
+  /* background: rgb(67, 150, 67); */
 }
 
 .table-head, .item {
@@ -109,7 +114,12 @@
 
 .icon-trash::after {
     font-family: "Font Awesome 5 Free"; font-weight: 400; content: "\f2ed";
+    cursor: pointer;
   }
+
+#delete-field {
+  text-align: center;
+}
 
 
 .about-box {
